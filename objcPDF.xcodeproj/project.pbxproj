@@ -3,32 +3,49 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC9B597360F65093E334AA1A /* Pods_objcPDF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E57DCD9CD4E6692623D1D96 /* Pods_objcPDF.framework */; };
 		F62AFCEB269C2294003DB7B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F62AFCEA269C2294003DB7B0 /* AppDelegate.m */; };
 		F62AFCEE269C2294003DB7B0 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F62AFCED269C2294003DB7B0 /* SceneDelegate.m */; };
-		F62AFCF1269C2294003DB7B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F62AFCF0269C2294003DB7B0 /* ViewController.m */; };
-		F62AFCF4269C2294003DB7B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F62AFCF2269C2294003DB7B0 /* Main.storyboard */; };
+		F62AFCF1269C2294003DB7B0 /* EntryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F62AFCF0269C2294003DB7B0 /* EntryListVC.m */; };
 		F62AFCF6269C2295003DB7B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F62AFCF5269C2295003DB7B0 /* Assets.xcassets */; };
 		F62AFCF9269C2295003DB7B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F62AFCF7269C2295003DB7B0 /* LaunchScreen.storyboard */; };
 		F62AFCFC269C2295003DB7B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F62AFCFB269C2295003DB7B0 /* main.m */; };
+		F62AFD05269C2CA6003DB7B0 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F62AFD04269C2CA6003DB7B0 /* Entry.m */; };
+		F62AFD09269C2DCF003DB7B0 /* EntryNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F62AFD08269C2DCF003DB7B0 /* EntryNode.m */; };
+		F62AFD0C269C3AFA003DB7B0 /* DataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F62AFD0B269C3AFA003DB7B0 /* DataFetcher.m */; };
+		F66113E4269D77820058377B /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F66113E3269D77820058377B /* TableViewCell.m */; };
+		F66113E8269D88C80058377B /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F66113E7269D88C80058377B /* CollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6591B54AC26CEC8A0463FB6B /* Pods-objcPDF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-objcPDF.release.xcconfig"; path = "Target Support Files/Pods-objcPDF/Pods-objcPDF.release.xcconfig"; sourceTree = "<group>"; };
+		8E57DCD9CD4E6692623D1D96 /* Pods_objcPDF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_objcPDF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1C86FBBE36F0FBFC5588722 /* Pods-objcPDF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-objcPDF.debug.xcconfig"; path = "Target Support Files/Pods-objcPDF/Pods-objcPDF.debug.xcconfig"; sourceTree = "<group>"; };
 		F62AFCE6269C2294003DB7B0 /* objcPDF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = objcPDF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F62AFCE9269C2294003DB7B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F62AFCEA269C2294003DB7B0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F62AFCEC269C2294003DB7B0 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		F62AFCED269C2294003DB7B0 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		F62AFCEF269C2294003DB7B0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F62AFCF0269C2294003DB7B0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		F62AFCF3269C2294003DB7B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F62AFCEF269C2294003DB7B0 /* EntryListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntryListVC.h; sourceTree = "<group>"; };
+		F62AFCF0269C2294003DB7B0 /* EntryListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EntryListVC.m; sourceTree = "<group>"; };
 		F62AFCF5269C2295003DB7B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F62AFCF8269C2295003DB7B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F62AFCFA269C2295003DB7B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F62AFCFB269C2295003DB7B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F62AFD03269C2CA6003DB7B0 /* Entry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		F62AFD04269C2CA6003DB7B0 /* Entry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		F62AFD07269C2DCF003DB7B0 /* EntryNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntryNode.h; sourceTree = "<group>"; };
+		F62AFD08269C2DCF003DB7B0 /* EntryNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EntryNode.m; sourceTree = "<group>"; };
+		F62AFD0A269C3AFA003DB7B0 /* DataFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataFetcher.h; sourceTree = "<group>"; };
+		F62AFD0B269C3AFA003DB7B0 /* DataFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataFetcher.m; sourceTree = "<group>"; };
+		F66113E2269D77820058377B /* TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		F66113E3269D77820058377B /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		F66113E6269D88C80058377B /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		F66113E7269D88C80058377B /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +53,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC9B597360F65093E334AA1A /* Pods_objcPDF.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B924C1585F2C3900842AB21 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1C86FBBE36F0FBFC5588722 /* Pods-objcPDF.debug.xcconfig */,
+				6591B54AC26CEC8A0463FB6B /* Pods-objcPDF.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F1D0A2046AE61D3B5C6ED668 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E57DCD9CD4E6692623D1D96 /* Pods_objcPDF.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F62AFCDD269C2294003DB7B0 = {
 			isa = PBXGroup;
 			children = (
 				F62AFCE8269C2294003DB7B0 /* objcPDF */,
 				F62AFCE7269C2294003DB7B0 /* Products */,
+				0B924C1585F2C3900842AB21 /* Pods */,
+				F1D0A2046AE61D3B5C6ED668 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,15 +102,48 @@
 				F62AFCEA269C2294003DB7B0 /* AppDelegate.m */,
 				F62AFCEC269C2294003DB7B0 /* SceneDelegate.h */,
 				F62AFCED269C2294003DB7B0 /* SceneDelegate.m */,
-				F62AFCEF269C2294003DB7B0 /* ViewController.h */,
-				F62AFCF0269C2294003DB7B0 /* ViewController.m */,
-				F62AFCF2269C2294003DB7B0 /* Main.storyboard */,
-				F62AFCF5269C2295003DB7B0 /* Assets.xcassets */,
+				F66113E5269D778C0058377B /* Views */,
+				F62AFD02269C229F003DB7B0 /* VC */,
+				F62AFD06269C2CAA003DB7B0 /* Model */,
 				F62AFCF7269C2295003DB7B0 /* LaunchScreen.storyboard */,
 				F62AFCFA269C2295003DB7B0 /* Info.plist */,
 				F62AFCFB269C2295003DB7B0 /* main.m */,
+				F62AFCF5269C2295003DB7B0 /* Assets.xcassets */,
 			);
 			path = objcPDF;
+			sourceTree = "<group>";
+		};
+		F62AFD02269C229F003DB7B0 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				F62AFCEF269C2294003DB7B0 /* EntryListVC.h */,
+				F62AFCF0269C2294003DB7B0 /* EntryListVC.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		F62AFD06269C2CAA003DB7B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F62AFD0A269C3AFA003DB7B0 /* DataFetcher.h */,
+				F62AFD0B269C3AFA003DB7B0 /* DataFetcher.m */,
+				F62AFD03269C2CA6003DB7B0 /* Entry.h */,
+				F62AFD04269C2CA6003DB7B0 /* Entry.m */,
+				F62AFD07269C2DCF003DB7B0 /* EntryNode.h */,
+				F62AFD08269C2DCF003DB7B0 /* EntryNode.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F66113E5269D778C0058377B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F66113E2269D77820058377B /* TableViewCell.h */,
+				F66113E3269D77820058377B /* TableViewCell.m */,
+				F66113E6269D88C80058377B /* CollectionViewCell.h */,
+				F66113E7269D88C80058377B /* CollectionViewCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +153,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F62AFCFF269C2295003DB7B0 /* Build configuration list for PBXNativeTarget "objcPDF" */;
 			buildPhases = (
+				9CB02C1EFF4B6EC2EC2E845C /* [CP] Check Pods Manifest.lock */,
 				F62AFCE2269C2294003DB7B0 /* Sources */,
 				F62AFCE3269C2294003DB7B0 /* Frameworks */,
 				F62AFCE4269C2294003DB7B0 /* Resources */,
+				139960CA186141F65B7839DE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -134,19 +206,65 @@
 			files = (
 				F62AFCF9269C2295003DB7B0 /* LaunchScreen.storyboard in Resources */,
 				F62AFCF6269C2295003DB7B0 /* Assets.xcassets in Resources */,
-				F62AFCF4269C2294003DB7B0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		139960CA186141F65B7839DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-objcPDF/Pods-objcPDF-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-objcPDF/Pods-objcPDF-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-objcPDF/Pods-objcPDF-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CB02C1EFF4B6EC2EC2E845C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-objcPDF-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F62AFCE2269C2294003DB7B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F62AFCF1269C2294003DB7B0 /* ViewController.m in Sources */,
+				F62AFD09269C2DCF003DB7B0 /* EntryNode.m in Sources */,
+				F62AFCF1269C2294003DB7B0 /* EntryListVC.m in Sources */,
+				F62AFD05269C2CA6003DB7B0 /* Entry.m in Sources */,
+				F66113E8269D88C80058377B /* CollectionViewCell.m in Sources */,
 				F62AFCEB269C2294003DB7B0 /* AppDelegate.m in Sources */,
+				F62AFD0C269C3AFA003DB7B0 /* DataFetcher.m in Sources */,
+				F66113E4269D77820058377B /* TableViewCell.m in Sources */,
 				F62AFCFC269C2295003DB7B0 /* main.m in Sources */,
 				F62AFCEE269C2294003DB7B0 /* SceneDelegate.m in Sources */,
 			);
@@ -155,14 +273,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F62AFCF2269C2294003DB7B0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F62AFCF3269C2294003DB7B0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F62AFCF7269C2295003DB7B0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,6 +398,7 @@
 		};
 		F62AFD00269C2295003DB7B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1C86FBBE36F0FBFC5588722 /* Pods-objcPDF.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,6 +417,7 @@
 		};
 		F62AFD01269C2295003DB7B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6591B54AC26CEC8A0463FB6B /* Pods-objcPDF.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

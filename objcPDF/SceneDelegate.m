@@ -13,11 +13,40 @@
 
 @implementation SceneDelegate
 
+UIWindow *window = NULL;
+
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    UIWindowScene *windowScene = (UIWindowScene*)scene;
+    EntryListVC *rootViewController = [EntryListVC new];
+    
+    EntryNode *rootNode = [EntryNode new];
+    rootNode.children = [NSMutableArray new];
+    rootNode.value = [Entry new];
+    rootNode.value.itemName = @"Main Folder";
+    rootNode.value.itemType = @"d";
+    
+    rootViewController.entryNode = rootNode;
+    rootViewController.layoutType = @"table";
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    navigationController.navigationBar.prefersLargeTitles = YES;
+    
+    window = [[UIWindow alloc] initWithWindowScene:windowScene];
+    window.windowScene = windowScene;
+    window.rootViewController = navigationController;
+    [window makeKeyAndVisible];
+    
+//    let navigationController = UINavigationController(rootViewController: EntryListVC(entryNode: EntryNode(value: Entry(id: "", parentID: "", itemType: "d", itemName: "Main Folder")), layoutType: .table))
+//    navigationController.navigationBar.prefersLargeTitles = true
+//
+//    window = UIWindow(windowScene: windowScene)
+//    window?.windowScene = windowScene
+//    window?.rootViewController = navigationController
+//    window?.makeKeyAndVisible()
 }
 
 
