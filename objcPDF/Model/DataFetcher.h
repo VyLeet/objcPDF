@@ -14,9 +14,9 @@
 
 @interface DataFetcher : NSObject
 
-typedef void(^completionBlock)(void);
+typedef void(^CompletionBlock)(void);
 
--(void)getFileTree:(EntryNode*)entryNode completed: (completionBlock)completion;
++(void)getFileTree:(EntryNode*)entryNode completed: (CompletionBlock)completion;
 
 @end
 

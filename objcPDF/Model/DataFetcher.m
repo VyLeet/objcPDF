@@ -11,15 +11,15 @@
 
 // MARK: - Constants
 
-NSString *spreadSheetID = @"1wDg1ZvDxA7nFzUJcl8B9Q5JiyIyny_44xwiOqNhYxZw";
-NSString *apiKey = @"AIzaSyDSE21FBc2H_Z-O8kqsHPAYhmGOCypi2wg";
-NSString *queryRange = @"PDFexpert!A2:D38";
+static NSString* const spreadSheetID = @"1wDg1ZvDxA7nFzUJcl8B9Q5JiyIyny_44xwiOqNhYxZw";
+static NSString* const apiKey = @"AIzaSyDSE21FBc2H_Z-O8kqsHPAYhmGOCypi2wg";
+static NSString* const queryRange = @"PDFexpert!A2:D38";
 
-NSMutableArray *fetchedResponse = nil;
+NSMutableArray<NSArray<NSString*>*>* fetchedResponse = nil;
 
 // MARK: - Fetches Google Sheets API data using GoogleAPIClientForREST
 
--(void) getFileTree:(EntryNode*)entryNode completed:(completionBlock)completion {
++(void) getFileTree:(EntryNode*)entryNode completed:(CompletionBlock)completion {
     GTLRSheetsService *service = [GTLRSheetsService new];
     service.APIKey = apiKey;
     
@@ -30,44 +30,39 @@ NSMutableArray *fetchedResponse = nil;
             NSLog(@"%@", callbackError.localizedDescription);
         } else {
             GTLRSheets_ValueRange *data = (GTLRSheets_ValueRange*)object;
-            fetchedResponse = (NSMutableArray*)data.values;
-            [self treeFromJSONResponse:entryNode];
+            fetchedResponse = [data.values mutableCopy];
+            
+            NSMutableDictionary* dictionary = [self dictionaryFromResponse];
+            [entryNode growTreeFromDictionary:dictionary];
             
             completion();
         }
     }];
 }
 
-// MARK: - Builds tree from [[NSString]]
--(void) treeFromJSONResponse:(EntryNode*)entryNode {
+// MARK: - Converts fetchedResponse NSArray into NSDictionary
+/// Key: parentID;  Value: array of children nodes
++(NSMutableDictionary*) dictionaryFromResponse {
+    NSMutableDictionary* dictionary = [NSMutableDictionary new];
     
-    while (fetchedResponse.count != 0) {
-        NSUInteger fetchedResponseCount = fetchedResponse.count;
-        
-        for (int i = 0; i < fetchedResponseCount; i++) {
-            Entry *childEntry = [Entry new];
-            childEntry.selfID = [[NSUUID alloc] initWithUUIDString:fetchedResponse[i][0]];
+    for (NSArray<NSString*>* array in fetchedResponse) {
+        @autoreleasepool {
+            Entry* childEntry = [[Entry alloc] initWithArray:array];
+            EntryNode* childEntryNode = [[EntryNode alloc] initWithEntry:childEntry];
             
-            if ([fetchedResponse[i][1] isEqualToString:@""]) {
-                childEntry.parentID = nil;
+            NSString* dictionaryKey = [EntryNode nonNilStringFromUUID:childEntry.parentID];
+            
+            if (dictionary[dictionaryKey]) {
+                [dictionary[dictionaryKey] addObject:childEntryNode];
             } else {
-                childEntry.parentID = [[NSUUID alloc] initWithUUIDString:fetchedResponse[i][1]];
-            }
-            childEntry.itemType = fetchedResponse[i][2];
-            childEntry.itemName = fetchedResponse[i][3];
-            
-            EntryNode *childNode = [EntryNode new];
-            childNode.children = [NSMutableArray new];
-            childNode.value = childEntry;
-            
-            EntryNode *parent = [entryNode findParentFor:childNode];
-            if (parent != nil) {
-                [parent addChild:childNode];
-                [fetchedResponse removeObjectAtIndex:i];
-                fetchedResponseCount -= 1;
+                NSMutableArray<EntryNode*>* nodeArray = [NSMutableArray new];
+                [nodeArray addObject:childEntryNode];
+                [dictionary setObject:nodeArray forKey:dictionaryKey];
             }
         }
     }
+    
+    return dictionary;
 }
 
 @end

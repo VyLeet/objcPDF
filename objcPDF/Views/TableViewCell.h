@@ -8,11 +8,14 @@
 #import <UIKit/UIKit.h>
 #import "Entry.h"
 
+@interface TableViewCell : UITableViewCell {
+    UIImageView* _entryImageView;
+    UILabel* _entryTitleLabel;
+}
 
-@interface TableViewCell : UITableViewCell
+@property (nonatomic, readonly) UIImageView* entryImageView;
+@property (nonatomic, readonly) UILabel* entryTitleLabel;
 
-@property (nonatomic) UIImageView *entryImageView;
-@property (nonatomic) UILabel *entryTitleLabel;
 @property NSString *identifier;
 
 -(void)setEntry:(Entry*)entry;

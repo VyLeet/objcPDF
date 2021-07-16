@@ -14,10 +14,15 @@
 
 @property Entry *value;
 @property (weak) EntryNode *parent;
-@property NSMutableArray *children;
+@property (readonly) NSArray<EntryNode*>* children;
 
--(void)addChild:(EntryNode*)node;
--(EntryNode*)findParentFor:(EntryNode*)entryNode;
+-(void)addChildren:(NSMutableArray<EntryNode*>*)arrayOfChildren;
+
+-(void)growTreeFromDictionary:(NSMutableDictionary*)dictionary;
+
++(NSString*)nonNilStringFromUUID:(NSUUID*)baseNSUUID;
+
+-(instancetype)initWithEntry:(Entry*)entry;
 
 @end
 

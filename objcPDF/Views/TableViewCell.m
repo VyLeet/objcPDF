@@ -17,8 +17,8 @@
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.entryImageView = [UIImageView new];
-        self.entryTitleLabel = [UILabel new];
+        _entryImageView = [UIImageView new];
+        _entryTitleLabel = [UILabel new];
         
         [self.contentView addSubview:self.entryImageView];
         [self.contentView addSubview:self.entryTitleLabel];
@@ -34,7 +34,7 @@
 // MARK: - Sets data for the cell
 
 -(void)setEntry:(Entry *)entry {
-    NSString* imageName = ([entry.itemType isEqualToString:@"d"]) ? @"folder.fill" : @"doc.richtext.fill";
+    NSString* imageName = (entry.itemType == EntryTypeDirectory) ? @"folder.fill" : @"doc.richtext.fill";
     UIImage* entryImage = [UIImage systemImageNamed:imageName];
     [self.entryImageView setImage:entryImage];
     [self.entryTitleLabel setText:entry.itemName];

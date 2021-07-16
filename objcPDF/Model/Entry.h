@@ -9,12 +9,21 @@
 
 //NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, EntryType) {
+    EntryTypeDirectory,
+    EntryTypeFile
+};
+
 @interface Entry : NSObject
 
-@property NSUUID *selfID;
-@property NSUUID *parentID;
-@property NSString *itemType;
-@property NSString *itemName;
+@property (nonatomic) NSUUID *selfID;
+@property (nonatomic) NSUUID *parentID;
+@property (nonatomic) EntryType itemType;
+@property (nonatomic) NSString *itemName;
+
+-(instancetype)initWithSelfID:(NSString*)selfID parentID:(NSString*)parentID itemType:(NSString*)itemType itemName:(NSString*)itemName;
+
+-(instancetype)initWithArray:(NSArray<NSString*>*)array;
 
 @end
 

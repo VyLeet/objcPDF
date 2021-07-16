@@ -6,15 +6,13 @@
 //
 
 #import "SceneDelegate.h"
+#import "EntryListVC.h"
 
 @interface SceneDelegate ()
 
 @end
 
 @implementation SceneDelegate
-
-UIWindow *window = NULL;
-
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -23,30 +21,21 @@ UIWindow *window = NULL;
     UIWindowScene *windowScene = (UIWindowScene*)scene;
     EntryListVC *rootViewController = [EntryListVC new];
     
-    EntryNode *rootNode = [EntryNode new];
-    rootNode.children = [NSMutableArray new];
-    rootNode.value = [Entry new];
-    rootNode.value.itemName = @"Main Folder";
-    rootNode.value.itemType = @"d";
+    Entry* entry = [[Entry alloc] initWithSelfID:nil parentID:nil itemType:@"d" itemName:@"Main Folder"];
+    EntryNode *rootNode = [[EntryNode alloc] initWithEntry:entry];
+    
     
     rootViewController.entryNode = rootNode;
-    rootViewController.layoutType = @"table";
+    rootViewController.layoutType = LayoutTypeTable;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     navigationController.navigationBar.prefersLargeTitles = YES;
     
-    window = [[UIWindow alloc] initWithWindowScene:windowScene];
-    window.windowScene = windowScene;
-    window.rootViewController = navigationController;
-    [window makeKeyAndVisible];
+    self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
+    self.window.windowScene = windowScene;
+    self.window.rootViewController = navigationController;
+    [self.window makeKeyAndVisible];
     
-//    let navigationController = UINavigationController(rootViewController: EntryListVC(entryNode: EntryNode(value: Entry(id: "", parentID: "", itemType: "d", itemName: "Main Folder")), layoutType: .table))
-//    navigationController.navigationBar.prefersLargeTitles = true
-//
-//    window = UIWindow(windowScene: windowScene)
-//    window?.windowScene = windowScene
-//    window?.rootViewController = navigationController
-//    window?.makeKeyAndVisible()
 }
 
 

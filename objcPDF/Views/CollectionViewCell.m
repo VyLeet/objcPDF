@@ -9,13 +9,16 @@
 
 @implementation CollectionViewCell
 
+@synthesize entryImageView = _entryImageView;
+@synthesize entryTitleLabel = _entryTitleLabel;
+
 // MARK: - Requiered initWithFrame override
 
 -(instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         
-        self.entryImageView = [UIImageView new];
-        self.entryTitleLabel = [UILabel new];
+        _entryImageView = [UIImageView new];
+        _entryTitleLabel = [UILabel new];
         
         [self.contentView addSubview:self.entryImageView];
         [self.contentView addSubview:self.entryTitleLabel];
@@ -30,7 +33,7 @@
 // MARK: - Sets data for the cell
 
 -(void)setEntry:(Entry *)entry {
-    NSString* imageName = ([entry.itemType isEqualToString:@"d"]) ? @"folder.fill" : @"doc.richtext.fill";
+    NSString* imageName = (entry.itemType == EntryTypeDirectory) ? @"folder.fill" : @"doc.richtext.fill";
     UIImage* entryImage = [UIImage systemImageNamed:imageName];
     [self.entryImageView setImage:entryImage];
     self.entryTitleLabel.text = entry.itemName;
@@ -55,8 +58,34 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.entryTitleLabel.frame = CGRectMake(5, self.contentView.frame.size.height - 50, self.contentView.frame.size.width - 10, 50);
-    self.entryImageView.frame = CGRectMake(5, 0, self.contentView.frame.size.width - 10, self.contentView.frame.size.height - 50);
+    [self setImageViewConstraints];
+    [self setTitleLabelConstraints];
+}
+
+// MARK: - Sets constraints for the entryImageView
+
+-(void)setImageViewConstraints {
+    self.entryImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [NSLayoutConstraint activateConstraints:@[
+            [self.entryImageView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor],
+            [self.entryImageView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor constant:12],
+            [self.entryImageView.heightAnchor constraintEqualToConstant:80],
+            [self.entryImageView.widthAnchor constraintEqualToAnchor:self.entryImageView.heightAnchor]
+    ]];
+}
+
+// MARK: - Sets constraints for the entryTitleLabel
+
+-(void)setTitleLabelConstraints {
+    self.entryTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [NSLayoutConstraint activateConstraints:@[
+        [self.entryTitleLabel.centerYAnchor constraintEqualToAnchor:self.entryImageView.centerYAnchor],
+        [self.entryTitleLabel.leadingAnchor constraintEqualToAnchor:self.entryImageView.leadingAnchor],
+        [self.entryTitleLabel.heightAnchor constraintEqualToConstant:30],
+        [self.entryTitleLabel.topAnchor constraintEqualToAnchor:self.entryImageView.centerYAnchor constant:40],
+        [self.entryTitleLabel.trailingAnchor constraintEqualToAnchor:self.entryImageView.trailingAnchor]
+    ]];
 }
 
 @end

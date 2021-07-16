@@ -9,24 +9,28 @@
 
 @interface EntryListVC ()
 
+@property UITableView* tableView;
+@property UICollectionView* collectionView;
+
 @end
 
 @implementation EntryListVC
+
+NSString* tableCellID = @"tableViewCell";
+NSString* collectionCellID = @"collectionViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.tableView = [UITableView new];
     
-    self.layout = [UICollectionViewFlowLayout new];
-    self.layout.itemSize = CGSizeMake(100, 100);
-    self.layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.layout];
+    UICollectionViewFlowLayout* layout = [UICollectionViewFlowLayout new];
+    layout.itemSize = CGSizeMake(100, 100);
+    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
     
     if ([self.entryNode.value.itemName isEqualToString:@"Main Folder"]) {
-        DataFetcher *dataFetcher = [DataFetcher new];
         
-        [dataFetcher getFileTree:self.entryNode completed:^{
+        [DataFetcher getFileTree:self.entryNode completed:^{
             [self.tableView reloadData];
         }];
     }
@@ -34,7 +38,7 @@
     [self setTableViewDelegates];
     [self setCollectionViewDelegates];
     
-    if ([self.layoutType isEqualToString:@"table"]) {
+    if (self.layoutType == LayoutTypeTable) {
         [self configureTableView];
     } else {
         [self configureCollectionView];
@@ -53,7 +57,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell"];
+    TableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:tableCellID];
     Entry* entry = ((EntryNode*)self.entryNode.children[indexPath.row]).value;
     [cell setEntry:entry];
     return cell;
@@ -61,23 +65,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     EntryNode *nodeAtPath = (EntryNode*)_entryNode.children[indexPath.row];
-    if ([nodeAtPath.value.itemType isEqualToString:@"d"]) {
+    if (nodeAtPath.value.itemType == EntryTypeDirectory) {
         EntryListVC *newEntryListVC = [EntryListVC new];
         newEntryListVC.entryNode = nodeAtPath;
         newEntryListVC.layoutType = self.layoutType;
         
         [self.navigationController pushViewController:newEntryListVC animated:YES];
-        [tableView reloadData];
     }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     EntryNode *nodeAtPath = (EntryNode*)self.entryNode.children[indexPath.row];
-    if ([nodeAtPath.value.itemType isEqualToString:@"d"]) {
-        return YES;
-    } else {
-        return NO;
-    }
+    return nodeAtPath.value.itemType == EntryTypeDirectory;
 }
 
 // MARK: - collectionView methods
@@ -88,7 +89,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewCell" forIndexPath:indexPath];
+    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionCellID forIndexPath:indexPath];
     Entry* entry = ((EntryNode*)self.entryNode.children[indexPath.row]).value;
     [cell setEntry:entry];
     return cell;
@@ -97,29 +98,24 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     EntryNode *nodeAtPath = (EntryNode*)_entryNode.children[indexPath.row];
-    if ([nodeAtPath.value.itemType isEqualToString:@"d"]) {
+    if (nodeAtPath.value.itemType == EntryTypeDirectory) {
         EntryListVC *newEntryListVC = [EntryListVC new];
         newEntryListVC.entryNode = nodeAtPath;
         newEntryListVC.layoutType = self.layoutType;
         
         [self.navigationController pushViewController:newEntryListVC animated:YES];
-        [collectionView reloadData];
     }
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
     EntryNode *nodeAtPath = (EntryNode*)_entryNode.children[indexPath.row];
-    if ([nodeAtPath.value.itemType isEqualToString:@"d"]) {
-        return YES;
-    } else {
-        return NO;
-    }
+    return nodeAtPath.value.itemType == EntryTypeDirectory;
 }
 
 // MARK: - Configures navigationBar
 
 -(void)configureNavBarItems {
-    NSString* navBarImageName = ([self.layoutType isEqualToString:@"table"] ? @"square.grid.2x2.fill" : @"list.bullet");
+    NSString* navBarImageName = (self.layoutType == LayoutTypeTable ? @"square.grid.2x2.fill" : @"list.bullet");
     UIImage* navBarImage = [UIImage systemImageNamed:navBarImageName];
     UIBarButtonItem* layoutButton = [[UIBarButtonItem alloc] initWithImage:navBarImage style:(UIBarButtonItemStylePlain) target:self action:@selector(changeLayout)];
     
@@ -129,12 +125,12 @@
 // MARK: - Toggles layout between tableView and collectionView
 
 -(void)changeLayout {
-    if ([self.layoutType isEqualToString:@"table"]) {
-        self.layoutType = @"collection";
+    if (self.layoutType == LayoutTypeTable) {
+        self.layoutType = LayoutTypeCollection;
         [self.tableView removeFromSuperview];
         [self configureCollectionView];
     } else {
-        self.layoutType = @"table";
+        self.layoutType = LayoutTypeTable;
         [self.collectionView removeFromSuperview];
         [self configureTableView];
     }

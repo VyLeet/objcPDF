@@ -11,16 +11,18 @@
 #import "DataFetcher.h"
 #import "TableViewCell.h"
 #import "CollectionViewCell.h"
+#import "Entry.h"
+
+
+typedef NS_ENUM(NSUInteger, LayoutType) {
+    LayoutTypeTable,
+    LayoutTypeCollection
+};
 
 @interface EntryListVC : UIViewController <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property UITableView *tableView;
-@property UICollectionView *collectionView;
-@property EntryNode *entryNode;
-
-@property NSString *layoutType;
-@property UICollectionViewFlowLayout* layout;
-
+@property EntryNode* entryNode;
+@property LayoutType layoutType;
 
 @end
 
