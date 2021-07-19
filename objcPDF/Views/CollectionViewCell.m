@@ -7,10 +7,14 @@
 
 #import "CollectionViewCell.h"
 
-@implementation CollectionViewCell
+@interface CollectionViewCell ()
 
-@synthesize entryImageView = _entryImageView;
-@synthesize entryTitleLabel = _entryTitleLabel;
+@property (nonatomic) UIImageView* entryImageView;
+@property (nonatomic) UILabel* entryTitleLabel;
+
+@end
+
+@implementation CollectionViewCell
 
 // MARK: - Requiered initWithFrame override
 

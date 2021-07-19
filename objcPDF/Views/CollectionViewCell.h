@@ -10,13 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CollectionViewCell : UICollectionViewCell {
-    UIImageView* _entryImageView;
-    UILabel* _entryTitleLabel;
-}
-
-@property (nonatomic, readonly) UIImageView* entryImageView;
-@property (nonatomic, readonly) UILabel* entryTitleLabel;
+@interface CollectionViewCell : UICollectionViewCell
 
 @property NSString *identifier;
 

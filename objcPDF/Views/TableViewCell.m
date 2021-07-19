@@ -7,6 +7,13 @@
 
 #import "TableViewCell.h"
 
+@interface TableViewCell ()
+
+@property (nonatomic) UIImageView* entryImageView;
+@property (nonatomic) UILabel* entryTitleLabel;
+
+@end
+
 @implementation TableViewCell
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
